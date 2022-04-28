@@ -17,6 +17,7 @@ class User(Base):
     email = Column(String(250), nullable=False, unique=True)
     password = Column(String(250))
 
+
 class Favorite(Base):
     __tablename__ = 'favorite'
     
