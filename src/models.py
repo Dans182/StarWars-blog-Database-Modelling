@@ -16,16 +16,7 @@ class User(Base):
     username = Column(String(250), nullable=False, unique=True)
     email = Column(String(250), nullable=False, unique=True)
     password = Column(String(250))
-
-
-class Favorite(Base):
-    __tablename__ = 'favorite'
-    
-    id = Column(Integer, primary_key=True)
-    user_id = Column(Integer, ForeignKey("user.id"))
-    user = relationship(User)
-
-
+      
 class Character(Base):
     __tablename__ = 'character'
 
@@ -34,8 +25,6 @@ class Character(Base):
     age = Column(Integer, nullable=False)
     gender = Column(String(250), nullable=False)
     skin_color = Column(String(250), nullable=False)    
-    favorite_id = Column(Integer, ForeignKey("favorite.id"))
-    Favorite = relationship(Favorite)
 
 class Planet(Base):
     __tablename__ = 'planet'
@@ -46,8 +35,6 @@ class Planet(Base):
     population = Column(Integer, nullable=False)
     climate = Column(String(250), nullable=False)
     terrain = Column(String(250), nullable=False)
-    favorite_id = Column(Integer, ForeignKey("favorite.id"))
-    Favorite = relationship(Favorite)
     
 class Vehicle(Base):
     __tablename__ = 'vehicle'
@@ -57,8 +44,19 @@ class Vehicle(Base):
     model = Column(String(250), nullable=False)
     capacity = Column(Integer, nullable=False)
     vehicle_class = Column(String(250), nullable=False)
-    favorite_id = Column(Integer, ForeignKey("favorite.id"))
-    Favorite = relationship(Favorite)
+
+class Favorite(Base):
+    __tablename__ = 'favorite'
+    
+    id = Column(Integer, primary_key=True)
+    user_id = Column(Integer, ForeignKey("user.id"))
+    user = relationship(User)
+    character_id = Column(Integer, ForeignKey("character.id"))
+    character = relationship(Character)
+    planet_id = Column(Integer, ForeignKey("planet.id"))
+    planet = relationship(Planet)
+    vehicle_id = Column(Integer, ForeignKey("vehicle.id"))
+    vehicle = relationship(Vehicle)
 
 def to_dict(self):
     return {}
