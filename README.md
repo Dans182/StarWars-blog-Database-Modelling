@@ -1,3 +1,9 @@
+En el repositorio actual, se debía crear el modelo de base de datos para el blog de Star Wars que efectuamos semanas pasadas. Proximamente adaptaremos ese modelado a nuestro front en React del blog. 
+
+
+<img src="./QuickDBD-StarWars Blog">
+
+
 # StarWars blog database
 
 **Important**: To do this activity you need to `fork` this repo into your **Github** account and then open the forked repo on Gitpod.
